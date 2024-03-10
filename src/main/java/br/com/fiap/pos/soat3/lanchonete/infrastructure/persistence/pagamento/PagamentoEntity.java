@@ -1,11 +1,8 @@
 package br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.pagamento;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import br.com.fiap.pos.soat3.lanchonete.domain.entity.Pedido;
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.pedido.PedidoEntity;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "pagamento")
@@ -14,8 +11,10 @@ public class PagamentoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
     private Long id;
-    @Column(name = "pedido_id")
-    private Long pedidoId;
+
+    @OneToOne
+    @JoinColumn(name = "pedido_id")
+    private PedidoEntity pedido;
 
     @Column(name = "qr_code")
     private String qrCode;
@@ -23,8 +22,11 @@ public class PagamentoEntity {
     @Column(name = "webhook")
     private String webhook;
 
-    public PagamentoEntity(Long pedidoId, String qrCode, String webhook) {
-        this.pedidoId = pedidoId;
+    public PagamentoEntity() {
+    }
+
+    public PagamentoEntity(PedidoEntity pedido, String qrCode, String webhook) {
+        this.pedido = pedido;
         this.qrCode = qrCode;
         this.webhook = webhook;
     }
@@ -37,12 +39,12 @@ public class PagamentoEntity {
         this.id = id;
     }
 
-    public Long getPedidoId() {
-        return pedidoId;
+    public PedidoEntity getPedido() {
+        return pedido;
     }
 
-    public void setPedidoId(Long pedidoId) {
-        this.pedidoId = pedidoId;
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
     }
 
     public String getQrCode() {

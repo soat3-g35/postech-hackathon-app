@@ -18,7 +18,13 @@ public class PedidoDTOMapper {
     }
 
     public PedidoResponse toPedidoResponse(Pedido pedido) {
-        return new PedidoResponse(pedido.getId(), pedido.getClienteId(), pedido.getItensPedido(),
+        return new PedidoResponse(pedido.getId(), pedido.getClienteId(),
+                pedido.getItensPedido().stream().map(item ->
+                        new ItemPedidoResponse(
+                                item.getProduto(),
+                                item.getQuantidade()
+                        )
+                ).toList(),
                 pedido.getTotalPedido(), pedido.getStatus());
     }
 
@@ -30,7 +36,12 @@ public class PedidoDTOMapper {
                         new PedidoResponse(
                                 pedido.getId(),
                                 pedido.getClienteId(),
-                                pedido.getItensPedido(),
+                                pedido.getItensPedido().stream().map(item ->
+                                        new ItemPedidoResponse(
+                                                item.getProduto(),
+                                                item.getQuantidade()
+                                        )
+                                ).toList(),
                                 pedido.getTotalPedido(),
                                 pedido.getStatus()
                         )

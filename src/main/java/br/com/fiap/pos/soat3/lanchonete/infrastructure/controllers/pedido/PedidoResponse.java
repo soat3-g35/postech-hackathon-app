@@ -1,6 +1,5 @@
 package br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.pedido;
 
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.ItemPedido;
 import br.com.fiap.pos.soat3.lanchonete.domain.entity.StatusPedido;
 
 import java.util.List;
@@ -11,43 +10,23 @@ public class PedidoResponse {
 
     private Long clienteId;
 
-    private List<ItemPedido> itensPedido;
+    private List<ItemPedidoResponse> itensPedido;
 
     private String totalPedido;
 
     private StatusPedido status;
 
-    public PedidoResponse(Long id, Long clienteId, List<ItemPedido> itensPedido, String totalPedido,
-                          StatusPedido status) {
+    public PedidoResponse(
+            Long id, Long clienteId,
+            List<ItemPedidoResponse> itensPedido,
+            String totalPedido,
+            StatusPedido status) {
         this.id = id;
         this.clienteId = clienteId;
         this.itensPedido = itensPedido;
         this.totalPedido = totalPedido;
         this.status = status;
     }
-
-//    public static PedidoResponse fromDomain(Pedido pedido) {
-//        return new PedidoResponse(pedido.getId(), pedido.getClienteId(), pedido.getItensPedido(),
-//                pedido.getTotalPedido(), pedido.getStatus());
-//    }
-
-//    public static List<PedidoResponse> fromDomain(List<Pedido> pedidos) {
-//        var lista = new ArrayList<PedidoResponse>();
-//
-//        pedidos.forEach(pedido ->
-//                lista.add(
-//                        new PedidoResponse(
-//                                pedido.getId(),
-//                                pedido.getClienteId(),
-//                                pedido.getItensPedido(),
-//                                pedido.getTotalPedido(),
-//                                pedido.getStatus()
-//                        )
-//                )
-//        );
-//
-//        return lista;
-//    }
 
     public Long getId() {
         return id;
@@ -65,11 +44,11 @@ public class PedidoResponse {
         this.clienteId = clienteId;
     }
 
-    public List<ItemPedido> getItensPedido() {
+    public List<ItemPedidoResponse> getItensPedido() {
         return itensPedido;
     }
 
-    public void setItensPedido(List<ItemPedido> itensPedido) {
+    public void setItensPedido(List<ItemPedidoResponse> itensPedido) {
         this.itensPedido = itensPedido;
     }
 

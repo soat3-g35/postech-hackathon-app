@@ -2,6 +2,8 @@ package br.com.fiap.pos.soat3.lanchonete.infrastructure.gateways.pedido;
 
 import br.com.fiap.pos.soat3.lanchonete.domain.entity.*;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.gateways.produto.ProdutoEntityMapper;
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.categoria.CategoriaEntity;
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.cliente.ClienteEntity;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.itempedido.ItemPedidoEntity;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.pedido.PedidoEntity;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.produto.ProdutoEntity;
@@ -48,9 +50,11 @@ public class PedidoEntityMapper {
     PedidoEntity toEntity(Pedido pedidoDomainObj) {
 
         PedidoEntity pedidoEntity = new PedidoEntity();
+        ClienteEntity cliente = new ClienteEntity();
+        cliente.setId(pedidoDomainObj.getClienteId());
         List<ItemPedidoEntity> itensPedidoEntity = new ArrayList<>();
         addItems(pedidoDomainObj, itensPedidoEntity);
-        pedidoEntity.setClientId(pedidoDomainObj.getClienteId());
+        pedidoEntity.setCliente(cliente);
         pedidoEntity.setItensPedido(itensPedidoEntity);
         pedidoEntity.setDataDeCriacao(LocalDateTime.now());
         pedidoEntity.setTotalPedido(pedidoDomainObj.getTotalPedido());
@@ -61,7 +65,7 @@ public class PedidoEntityMapper {
     public Pedido toDomain(PedidoEntity pedidoEntity) {
         return new Pedido(
                 pedidoEntity.getId(),
-                pedidoEntity.getClientId(),
+                pedidoEntity.getCliente().getId(),
                 itemPedidoFromEntity(pedidoEntity.getItensPedido()),
                 pedidoEntity.getDataDeCriacao(),
                 pedidoEntity.getTotalPedido(),

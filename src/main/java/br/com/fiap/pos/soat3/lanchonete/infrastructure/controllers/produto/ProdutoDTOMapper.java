@@ -13,7 +13,7 @@ public class ProdutoDTOMapper {
         return new Produto(request.nome(),
                 request.descricao(),
                 request.imagem(),
-                request.valor() != null ? new BigDecimal(request.valor()) : null,
+                request.valor() != null ? new BigDecimal(request.valor()) : BigDecimal.ZERO,
                 request.categoriaId() != null ? new Categoria(request.categoriaId()) : null);
     }
 
@@ -22,7 +22,7 @@ public class ProdutoDTOMapper {
                 request.nome(),
                 request.descricao(),
                 request.imagem(),
-                request.valor() != null ? new BigDecimal(request.valor()) : null,
+                request.valor() != null ? new BigDecimal(request.valor()) : BigDecimal.ZERO,
                 request.categoriaId() != null ? new Categoria(request.categoriaId()) : null);
     }
 
