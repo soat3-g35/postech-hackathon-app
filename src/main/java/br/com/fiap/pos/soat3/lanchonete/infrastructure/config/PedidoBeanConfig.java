@@ -9,6 +9,7 @@ import br.com.fiap.pos.soat3.lanchonete.application.usecases.pedido.ListaPedidos
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.pedido.PedidoDTOMapper;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.gateways.pedido.PedidoEntityMapper;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.gateways.pedido.PedidoRepositoryGateway;
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.gateways.produto.ProdutoEntityMapper;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.integration.EnviaConfirmacaoMock;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.integration.MVPCliente;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.itempedido.ItemPedidoRepository;

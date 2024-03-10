@@ -33,6 +33,10 @@ public class Produto {
 
     }
 
+    public Produto(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

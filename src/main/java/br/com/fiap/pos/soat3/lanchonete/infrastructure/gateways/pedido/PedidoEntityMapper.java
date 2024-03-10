@@ -1,29 +1,43 @@
 package br.com.fiap.pos.soat3.lanchonete.infrastructure.gateways.pedido;
 
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.ItemPedido;
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Pedido;
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.StatusPedido;
+import br.com.fiap.pos.soat3.lanchonete.domain.entity.*;
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.gateways.produto.ProdutoEntityMapper;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.itempedido.ItemPedidoEntity;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.pedido.PedidoEntity;
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.produto.ProdutoEntity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PedidoEntityMapper {
 
-    private static void addItems(Pedido pedido, List<ItemPedidoEntity> itensPedidoEntity) {
+    private void addItems(Pedido pedido, List<ItemPedidoEntity> itensPedidoEntity) {
         pedido.getItensPedido().forEach(item ->
-                itensPedidoEntity.add(new ItemPedidoEntity(item.getProdutoId(), item.getQuantidade()))
+                itensPedidoEntity.add(
+                        new ItemPedidoEntity(
+                                new ProdutoEntity(item.getProduto().getId()), item.getQuantidade())
+                )
         );
     }
 
     public static List<ItemPedido> itemPedidoFromEntity(List<ItemPedidoEntity> items) {
         var lista = new ArrayList<ItemPedido>();
-
         items.forEach(pedido ->
                 lista.add(new ItemPedido(
-                        pedido.getProdutoId(),
+                        new Produto(
+                                pedido.getProduto().getId(),
+                                pedido.getProduto().getNome(),
+                                pedido.getProduto().getDescricao(),
+                                pedido.getProduto().getImagem(),
+                                new BigDecimal(pedido.getProduto().getValor()),
+                                new Categoria(
+                                        pedido.getProduto().getCategoria().getId(),
+                                        pedido.getProduto().getCategoria().getNome()
+                                )
+
+                        ),
                         pedido.getQuantidade()
                 ))
         );

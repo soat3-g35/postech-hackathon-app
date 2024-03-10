@@ -65,7 +65,7 @@ public class PagamentoRepositoryGateway implements PagamentoGateway {
         BigDecimal total = new BigDecimal("0");
 
         for (ItemPedido itemPedido : itensPedido) {
-            Produto produto = produtoRepositoryGateway.buscaProduto(itemPedido.getProdutoId());
+            Produto produto = produtoRepositoryGateway.buscaProduto(itemPedido.getProduto().getId());
             String valorUnitario = String.valueOf(produto.getValor());
             BigDecimal valor = new BigDecimal(valorUnitario.replaceAll("\\.", "").replace(",", "."));
 

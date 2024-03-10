@@ -40,8 +40,6 @@ public class PedidoRepositoryGateway implements PedidoGateway {
             itemPedidoEntity.setPedido(pedidoEntity);
             itemPedidoRepository.save(itemPedidoEntity);
         }
-
-        //log.info(String.format("Lanchonete: Pedido criado %s", pedidoEntity.getId()));
     }
 
     @Override
