@@ -30,7 +30,7 @@ public class PagamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<PagamentoResponse> realizaPagamento(@Valid @RequestBody PagamentoRequest pagamentoRequest) {
+    public ResponseEntity<RealizaPagamentoResponse> realizaPagamento(@Valid @RequestBody PagamentoRequest pagamentoRequest) {
         Pagamento pagamentoObj = pagamentoDTOMapper.toPagamento(pagamentoRequest);
         Pagamento pagamento = realizaPagamentoInteractor.realizaPagamento(pagamentoObj);
         return ResponseEntity.ok(pagamentoDTOMapper.toResponse(pagamento));

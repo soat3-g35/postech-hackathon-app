@@ -1,14 +1,9 @@
 package br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.pedido;
 
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.cliente.ClienteEntity;
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.itempedido.ItemPedidoEntity;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,8 +16,9 @@ public class PedidoEntity {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
     private Long id;
 
-    @Column(name = "cliente_id")
-    private Long clientId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private ClienteEntity cliente;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
     private List<ItemPedidoEntity> itensPedido;
@@ -44,12 +40,12 @@ public class PedidoEntity {
         this.id = id;
     }
 
-    public Long getClientId() {
-        return clientId;
+    public ClienteEntity getCliente() {
+        return cliente;
     }
 
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
     }
 
     public List<ItemPedidoEntity> getItensPedido() {

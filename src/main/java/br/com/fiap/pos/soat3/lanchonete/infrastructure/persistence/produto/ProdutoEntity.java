@@ -1,15 +1,10 @@
 package br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.produto;
 
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.categoria.CategoriaEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.itempedido.ItemPedidoEntity;
+import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
 @Table(name = "produto")
@@ -34,6 +29,9 @@ public class ProdutoEntity {
     @JoinColumn(name = "categoria_id", nullable = false)
     private CategoriaEntity categoria;
 
+    @OneToMany(mappedBy = "produto")
+    private Collection<ItemPedidoEntity> items;
+
     public ProdutoEntity(String nome, String valor, String descricao, String imagem, CategoriaEntity categoriaEntity) {
         this.nome = nome;
         this.valor = valor;
@@ -44,6 +42,10 @@ public class ProdutoEntity {
 
     public ProdutoEntity() {
 
+    }
+
+    public ProdutoEntity(Long id) {
+       this.id = id;
     }
 
     public Long getId() {
@@ -92,5 +94,13 @@ public class ProdutoEntity {
 
     public void setCategoria(CategoriaEntity categoria) {
         this.categoria = categoria;
+    }
+
+    public Collection<ItemPedidoEntity> getItems() {
+        return items;
+    }
+
+    public void setItems(Collection<ItemPedidoEntity> items) {
+        this.items = items;
     }
 }

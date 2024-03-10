@@ -1,14 +1,8 @@
 package br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.itempedido;
 
 import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.pedido.PedidoEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.produto.ProdutoEntity;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "item_pedido")
@@ -22,8 +16,9 @@ public class ItemPedidoEntity {
     @JoinColumn(name = "pedido_id")
     private PedidoEntity pedido;
 
-    @Column(name = "produto_id")
-    private Long produtoId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "produto_id")
+    private ProdutoEntity produto;
 
     @Column(name = "quantidade")
     private int quantidade;
@@ -31,8 +26,8 @@ public class ItemPedidoEntity {
     public ItemPedidoEntity() {
     }
 
-    public ItemPedidoEntity(Long produtoId, int quantidade) {
-        this.produtoId = produtoId;
+    public ItemPedidoEntity(ProdutoEntity produto, int quantidade) {
+        this.produto = produto;
         this.quantidade = quantidade;
     }
 
@@ -42,14 +37,6 @@ public class ItemPedidoEntity {
 
     public void setPedido(PedidoEntity pedido) {
         this.pedido = pedido;
-    }
-
-    public Long getProdutoId() {
-        return produtoId;
-    }
-
-    public void setProdutoId(Long produtoId) {
-        this.produtoId = produtoId;
     }
 
     public int getQuantidade() {
@@ -66,5 +53,13 @@ public class ItemPedidoEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ProdutoEntity getProduto() {
+        return produto;
+    }
+
+    public void setProduto(ProdutoEntity produto) {
+        this.produto = produto;
     }
 }

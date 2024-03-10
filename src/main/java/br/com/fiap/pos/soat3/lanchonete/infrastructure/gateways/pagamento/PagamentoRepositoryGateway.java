@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import java.math.BigDecimal;
 import java.util.List;
 
-
 public class PagamentoRepositoryGateway implements PagamentoGateway {
 
     private final Logger log = LoggerFactory.getLogger(PagamentoRepositoryGateway.class);
@@ -57,15 +56,15 @@ public class PagamentoRepositoryGateway implements PagamentoGateway {
         pagamento.setId(pagamentoRepository.save(pagamentoEntity).getId());
 
         pagamento.getPedido().setStatus(StatusPedido.AGUARDANDO_PAGAMENTO);
-        log.info(String.format("Lanchonete: Pagemento do pedido  %s gerado", pagamento.getPedido().getId()));
+        log.info(String.format("Lanchonete: Pagamento do pedido  %s gerado", pagamento.getPedido().getId()));
         return pagamento;
     }
 
     private String getTotal(List<ItemPedido> itensPedido) {
-        BigDecimal total = new BigDecimal("0");
+        BigDecimal total = BigDecimal.ZERO;
 
         for (ItemPedido itemPedido : itensPedido) {
-            Produto produto = produtoRepositoryGateway.buscaProduto(itemPedido.getProdutoId());
+            Produto produto = produtoRepositoryGateway.buscaProduto(itemPedido.getProduto().getId());
             String valorUnitario = String.valueOf(produto.getValor());
             BigDecimal valor = new BigDecimal(valorUnitario.replaceAll("\\.", "").replace(",", "."));
 

@@ -1,11 +1,9 @@
 package br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.cliente;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import br.com.fiap.pos.soat3.lanchonete.infrastructure.persistence.pedido.PedidoEntity;
+import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
 @Table(name = "cliente")
@@ -23,6 +21,9 @@ public class ClienteEntity {
 
     @Column(name = "cpf")
     private String cpf;
+
+    @OneToMany(mappedBy = "cliente")
+    private Collection<PedidoEntity> pedidos;
 
     public ClienteEntity() {
     }
@@ -70,5 +71,13 @@ public class ClienteEntity {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Collection<PedidoEntity> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Collection<PedidoEntity> pedidos) {
+        this.pedidos = pedidos;
     }
 }

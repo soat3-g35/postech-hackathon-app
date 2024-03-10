@@ -2,21 +2,21 @@ package br.com.fiap.pos.soat3.lanchonete.domain.entity;
 
 public class ItemPedido {
 
-    private Long produtoId;
+    private Produto produto;
 
     private int quantidade;
 
-    public ItemPedido(Long produtoId, int quantidade) {
-        this.produtoId = produtoId;
+    public ItemPedido(Produto produto, int quantidade) {
+        this.produto = produto;
         this.quantidade = quantidade;
     }
 
-    public Long getProdutoId() {
-        return produtoId;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setProdutoId(Long produtoId) {
-        this.produtoId = produtoId;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public int getQuantidade() {
