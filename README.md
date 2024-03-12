@@ -3,7 +3,7 @@ Projeto da Pós Tech da FIAP em Software Architecture
 
 ## Autoras
 
-✨ [@leonara](https://github.com/leonara) | [@alinedonatoc](https://github.com/alinedonatoc) | [@assouza19](https://github.com/assouza19) ✨
+✨ [@leonaraqm](https://github.com/leonara) | [@alinedonatoc](https://github.com/alinedonatoc) | [@assouza19](https://github.com/assouza19) ✨
 
 ## Descrição do Projeto
 Uma lanchonete de bairro está expandindo seus negócios e começando a ter dificuldades em controlar o fluxo de seus pedidos.
