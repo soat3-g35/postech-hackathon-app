@@ -54,7 +54,7 @@ jobs:
 
     - name: Deploy to EKS
       run: |
-        kubectl apply -f k8s/autoservico.yaml
+        kubectl apply -f k8s/deployment.yaml
         kubectl apply -f autoservico.yaml
       
     
