@@ -42,7 +42,7 @@ jobs:
  #       IMAGE_TAG: ${{ github.sha }}
  #     run: |
  #       docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
- #       docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
+ #       docker push -a $ECR_REGISTRY/$ECR_REPOSITORYY
 
     - name: Update Kube File
       run: aws eks update-kubeconfig --name cluster-postech
