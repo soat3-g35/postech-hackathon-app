@@ -18,8 +18,8 @@ spec:
         app: demo
     spec:
       containers:
-        - image: enilapb/api-img:v1
-          imagePullPolicy: IfNotPresent
+        - image: ${{ secrets.AWS_ACCOUNT_NUMBER }}.dkr.ecr.${{ secrets.AWS_ACCOUNT_REGION }}.amazonaws.com/repository:latest
+          imagePullPolicy: Always
           name: api-img
           resources:
             limits:
