@@ -18,7 +18,7 @@ spec:
         app: demo
     spec:
       containers:
-        - image: ${{ secrets.AWS_ACCOUNT_NUMBER }}.dkr.ecr.${{ secrets.AWS_ACCOUNT_REGION }}.amazonaws.com/repository:latest
+        - image: 471112648978.dkr.ecr.us-east-2.amazonaws.com/repository:latest
           imagePullPolicy: Always
           name: api-img
           resources:
