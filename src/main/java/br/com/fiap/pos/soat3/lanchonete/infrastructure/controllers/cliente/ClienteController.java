@@ -5,12 +5,16 @@ import br.com.fiap.pos.soat3.lanchonete.application.usecases.cliente.CadastraCli
 import br.com.fiap.pos.soat3.lanchonete.domain.entity.Cliente;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/clientes")
@@ -33,8 +37,10 @@ public class ClienteController {
     }
 
     @GetMapping("/{cpf}")
-    public ResponseEntity<ClienteResponse> buscaPorCpf(@PathVariable String cpf) {
-        Cliente cliente = buscaClientePorCPFUseCase.bucaClientePorCPF(cpf);
+    public ResponseEntity<ClienteResponse> buscaPorCpf(Authentication authentication, @PathVariable String cpf) {
+        final String claim = ((Jwt) authentication.getPrincipal()).getClaim("cognito:username").toString();
+        String cpfIdentify =  claim != null ? claim: cpf;
+        Cliente cliente = buscaClientePorCPFUseCase.bucaClientePorCPF(cpfIdentify);
         return ResponseEntity.ok(clienteDTOMapper.toResponse(cliente));
     }
 }
