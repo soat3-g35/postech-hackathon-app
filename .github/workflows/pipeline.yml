@@ -26,9 +26,9 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-2
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_ORG }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ORG }}
+        aws-region: us-east-1
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -38,18 +38,18 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: repository
+        ECR_REPOSITORY: postech-repository
         IMAGE_TAG: ${{ github.sha }}
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
 
     - name: Update Kube File
-      run: aws eks update-kubeconfig --name cluster-postech
+      run: aws eks update-kubeconfig --name education-eks-cluster
 
     - name: Deploy to EKS
       run: |
         kubectl apply -f k8s/deployment.yaml
-        
-      
-    
+
+
+
