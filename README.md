@@ -88,6 +88,7 @@ https://github.com/leonara/pos-tech/assets/147456852/d34d7720-77da-498d-93d9-397
   docker-compose -f local-autoservico.yaml up -d
 ```
 
+
 ### Rodando localmente com k8s
 
 ```bash
