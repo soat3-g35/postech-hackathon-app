@@ -1,10 +1,14 @@
 package br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.pagamento;
 
+import br.com.fiap.pos.soat3.lanchonete.application.usecases.cliente.BuscaClientePorCPFInteractor;
 import br.com.fiap.pos.soat3.lanchonete.application.usecases.pagamento.EnviaConfirmacaoInteractor;
 import br.com.fiap.pos.soat3.lanchonete.application.usecases.pagamento.RealizaPagamentoInteractor;
+import br.com.fiap.pos.soat3.lanchonete.domain.entity.Cliente;
 import br.com.fiap.pos.soat3.lanchonete.domain.entity.Pagamento;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,19 +23,26 @@ public class PagamentoController {
     private final RealizaPagamentoInteractor realizaPagamentoInteractor;
 
     private final EnviaConfirmacaoInteractor enviaConfirmacaoInteractor;
+
+    private final BuscaClientePorCPFInteractor buscaClientePorCPFUseCase;
+    
     private final PagamentoDTOMapper pagamentoDTOMapper;
 
     public PagamentoController(RealizaPagamentoInteractor realizaPagamentoInteractor,
                                EnviaConfirmacaoInteractor enviaConfirmacaoInteractor,
+                               BuscaClientePorCPFInteractor buscaClientePorCPFUseCase,
                                PagamentoDTOMapper pagamentoDTOMapper) {
         this.realizaPagamentoInteractor = realizaPagamentoInteractor;
         this.enviaConfirmacaoInteractor = enviaConfirmacaoInteractor;
+        this.buscaClientePorCPFUseCase = buscaClientePorCPFUseCase;
         this.pagamentoDTOMapper = pagamentoDTOMapper;
     }
 
     @PostMapping
-    public ResponseEntity<RealizaPagamentoResponse> realizaPagamento(@Valid @RequestBody PagamentoRequest pagamentoRequest) {
-        Pagamento pagamentoObj = pagamentoDTOMapper.toPagamento(pagamentoRequest);
+    public ResponseEntity<RealizaPagamentoResponse> realizaPagamento(Authentication authentication, @Valid @RequestBody PagamentoRequest pagamentoRequest) {
+        final String cpf = ((Jwt) authentication.getPrincipal()).getClaim("cognito:username").toString();
+        Cliente cliente = buscaClientePorCPFUseCase.bucaClientePorCPF(cpf);
+        Pagamento pagamentoObj = pagamentoDTOMapper.toPagamento(new PagamentoRequest(cliente.getId(), pagamentoRequest.itensPedido()));
         Pagamento pagamento = realizaPagamentoInteractor.realizaPagamento(pagamentoObj);
         return ResponseEntity.ok(pagamentoDTOMapper.toResponse(pagamento));
     }
