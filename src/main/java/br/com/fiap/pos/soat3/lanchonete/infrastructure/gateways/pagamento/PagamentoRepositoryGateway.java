@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Random;
 
 public class PagamentoRepositoryGateway implements PagamentoGateway {
 
@@ -48,9 +49,10 @@ public class PagamentoRepositoryGateway implements PagamentoGateway {
 
         pagamento.setPedido(pedidoRepositoryGateway.cadastraPedido(pedido));
 
-        MVPResponse response = realizaPagamentoMockGateway.realizaPagamentoMVP(pagamento.getPedido().getId(), pagamento.getId());
-        pagamento.setQrCode(response.getCode());
-        pagamento.setWebhook(response.getUrl());
+//        MVPResponse response = new MVPResponse(String.valueOf(Math.abs(new Random(pedido.getId()).nextInt())),
+//                "http://webhook-mock:9999/mock/".concat(String.valueOf(pagamentoId)));
+//        pagamento.setQrCode(response.getCode());
+//        pagamento.setWebhook(response.getUrl());
 
         var pagamentoEntity = pagamentoEntityMapper.toEntity(pagamento);
         pagamento.setId(pagamentoRepository.save(pagamentoEntity).getId());
