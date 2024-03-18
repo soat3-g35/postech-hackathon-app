@@ -5,14 +5,14 @@ import br.com.fiap.pos.soat3.lanchonete.application.usecases.pagamento.EnviaConf
 import br.com.fiap.pos.soat3.lanchonete.application.usecases.pagamento.RealizaPagamentoInteractor;
 import br.com.fiap.pos.soat3.lanchonete.domain.entity.Cliente;
 import br.com.fiap.pos.soat3.lanchonete.domain.entity.Pagamento;
+
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,9 +39,8 @@ public class PagamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<RealizaPagamentoResponse> realizaPagamento(Authentication authentication, @Valid @RequestBody PagamentoRequest pagamentoRequest) {
-        final String cpf = ((Jwt) authentication.getPrincipal()).getClaim("cognito:username").toString();
-        Cliente cliente = buscaClientePorCPFUseCase.bucaClientePorCPF(cpf);
+    public ResponseEntity<RealizaPagamentoResponse> realizaPagamento(@RequestHeader(value = "username") final String username, @Valid @RequestBody PagamentoRequest pagamentoRequest) {
+        Cliente cliente = buscaClientePorCPFUseCase.bucaClientePorCPF(username);
         Pagamento pagamentoObj = pagamentoDTOMapper.toPagamento(new PagamentoRequest(cliente.getId(), pagamentoRequest.itensPedido()));
         Pagamento pagamento = realizaPagamentoInteractor.realizaPagamento(pagamentoObj);
         return ResponseEntity.ok(pagamentoDTOMapper.toResponse(pagamento));
