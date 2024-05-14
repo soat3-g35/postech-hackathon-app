@@ -5,7 +5,6 @@ metadata:
   labels:
     app: pedido
   name: pedido
-  namespace: pedido
 spec:
   replicas: 1
   selector:
