@@ -14,7 +14,12 @@ public class ListaPedidosInteractor {
     }
 
     public List<Pedido> listaPedidos() {
-        return orderList(this.pedidoGateway.listaPedidos());
+        List<Pedido> list = this.pedidoGateway.listaPedidos();
+        if (list != null) {
+            return orderList(list);
+        } else {
+            return null;
+        }
     }
 
     private List<Pedido> orderList(List<Pedido> list) {
