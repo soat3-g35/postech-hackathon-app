@@ -12,6 +12,7 @@ com um atendente, além de poder acompanhar o status do seu pedido e também rea
 Esse tech challenge se limita à solução de backend, sendo assim, não há interfaces/aplicações visuais, somente APIs e arquitetura de escala.
 
 
+
 ## Documentação
 
 - [DDD](https://miro.com/app/board/uXjVNdf5-GE=/?share_link_id=675194698681)
