@@ -5,6 +5,7 @@ metadata:
   labels:
     app: pedido
   name: pedido
+  namespace: pedido
 spec:
   replicas: 1
   selector:
@@ -18,7 +19,7 @@ spec:
         app: pedido
     spec:
       containers:
-        - image: 471112887467.dkr.ecr.us-east-1.amazonaws.com/postech-repository:latest
+        - image: 471112887467.dkr.ecr.us-east-1.amazonaws.com/pedido-postech-repository:latest
           imagePullPolicy: Always
           name: api-img
           resources:
