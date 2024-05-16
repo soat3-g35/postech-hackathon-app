@@ -4,7 +4,7 @@ import br.com.fiap.pos.soat3.lanchonete.domain.entity.Categoria;
 
 public class CategoriaDTOMapper {
 
-    CategoriaResponse toResponse(Categoria categoria) {
+    public CategoriaResponse toResponse(Categoria categoria) {
         return new CategoriaResponse(categoria.getId(), categoria.getNome());
     }
 
