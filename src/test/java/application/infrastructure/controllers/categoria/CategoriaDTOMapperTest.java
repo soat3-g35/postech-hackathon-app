@@ -1,9 +1,9 @@
 package application.infrastructure.controllers.categoria;
 
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Categoria;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.categoria.CategoriaDTOMapper;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.categoria.CategoriaRequest;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.categoria.CategoriaResponse;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Categoria;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.categoria.CategoriaDTOMapper;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.categoria.CategoriaRequest;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.categoria.CategoriaResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

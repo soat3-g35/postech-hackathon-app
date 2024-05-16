@@ -1,15 +1,15 @@
 package application.infrastructure.controllers.produto;
 
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Categoria;
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Cliente;
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Produto;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.categoria.CategoriaResponse;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.cliente.ClienteDTOMapper;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.cliente.ClienteRequest;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.cliente.ClienteResponse;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.produto.ProdutoDTOMapper;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.produto.ProdutoRequest;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.produto.ProdutoResponse;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Categoria;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Cliente;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Produto;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.categoria.CategoriaResponse;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteDTOMapper;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteRequest;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteResponse;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.produto.ProdutoDTOMapper;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.produto.ProdutoRequest;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.produto.ProdutoResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

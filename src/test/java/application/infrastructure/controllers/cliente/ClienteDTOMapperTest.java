@@ -1,9 +1,9 @@
 package application.infrastructure.controllers.cliente;
 
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Cliente;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.cliente.ClienteDTOMapper;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.cliente.ClienteRequest;
-import br.com.fiap.pos.soat3.lanchonete.infrastructure.controllers.cliente.ClienteResponse;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Cliente;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteDTOMapper;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteRequest;
+import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

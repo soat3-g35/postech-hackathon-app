@@ -1,9 +1,9 @@
 package application.usecases.cliente;
 
-import br.com.fiap.pos.soat3.lanchonete.application.gateways.ClienteGateway;
-import br.com.fiap.pos.soat3.lanchonete.application.usecases.cliente.BuscaClientePorCPFInteractor;
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Categoria;
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Cliente;
+import br.com.fiap.pos.soat3.pedido.application.gateways.ClienteGateway;
+import br.com.fiap.pos.soat3.pedido.application.usecases.cliente.BuscaClientePorCPFInteractor;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Categoria;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Cliente;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

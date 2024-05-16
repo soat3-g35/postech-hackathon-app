@@ -1,8 +1,8 @@
 package application.usecases.categoria;
 
-import br.com.fiap.pos.soat3.lanchonete.application.gateways.CategoriaGateway;
-import br.com.fiap.pos.soat3.lanchonete.application.usecases.categoria.CadastraCategoriaInteractor;
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Categoria;
+import br.com.fiap.pos.soat3.pedido.application.gateways.CategoriaGateway;
+import br.com.fiap.pos.soat3.pedido.application.usecases.categoria.CadastraCategoriaInteractor;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Categoria;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -1,10 +1,10 @@
 package application.usecases.pedido;
 
-import br.com.fiap.pos.soat3.lanchonete.application.gateways.PedidoGateway;
-import br.com.fiap.pos.soat3.lanchonete.application.usecases.pedido.AtualizaStatusPedidoInteractor;
-import br.com.fiap.pos.soat3.lanchonete.application.usecases.pedido.ConsultaStatusPedidoInteractor;
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.ItemPedido;
-import br.com.fiap.pos.soat3.lanchonete.domain.entity.Pedido;
+import br.com.fiap.pos.soat3.pedido.application.gateways.PedidoGateway;
+import br.com.fiap.pos.soat3.pedido.application.usecases.pedido.AtualizaStatusPedidoInteractor;
+import br.com.fiap.pos.soat3.pedido.application.usecases.pedido.ConsultaStatusPedidoInteractor;
+import br.com.fiap.pos.soat3.pedido.domain.entity.ItemPedido;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Pedido;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
