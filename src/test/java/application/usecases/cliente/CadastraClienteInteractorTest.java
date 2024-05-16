@@ -1,7 +1,6 @@
 package application.usecases.cliente;
 
 import br.com.fiap.pos.soat3.pedido.application.gateways.ClienteGateway;
-import br.com.fiap.pos.soat3.pedido.application.usecases.cliente.BuscaClientePorCPFInteractor;
 import br.com.fiap.pos.soat3.pedido.application.usecases.cliente.CadastraClienteInteractor;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Cliente;
 import org.junit.jupiter.api.Test;
@@ -14,8 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class CadastraClienteInteractorTest {
-
+class CadastraClienteInteractorTest {
     @Mock
     private ClienteGateway gateway;
 
@@ -23,7 +21,7 @@ public class CadastraClienteInteractorTest {
     private CadastraClienteInteractor useCase;
 
     @Test
-    public void givenCorrectData_whenCadastraCliente_shouldReturnClienteModel() {
+    void givenCorrectData_whenCadastraCliente_shouldReturnClienteModel() {
         Cliente expected = new Cliente(
                1l, "teste", "email", "123"
         );

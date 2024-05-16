@@ -1,12 +1,8 @@
 package application.infrastructure.controllers.produto;
 
 import br.com.fiap.pos.soat3.pedido.domain.entity.Categoria;
-import br.com.fiap.pos.soat3.pedido.domain.entity.Cliente;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Produto;
 import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.categoria.CategoriaResponse;
-import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteDTOMapper;
-import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteRequest;
-import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteResponse;
 import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.produto.ProdutoDTOMapper;
 import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.produto.ProdutoRequest;
 import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.produto.ProdutoResponse;
@@ -19,12 +15,12 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-public class ProdutoDTOMapperTest {
+class ProdutoDTOMapperTest {
 
     private ProdutoDTOMapper mapper = new ProdutoDTOMapper();
 
     @Test
-    public void givenRequest_whenMapper_shouldReturnModel() {
+    void givenRequest_whenMapper_shouldReturnModel() {
         ProdutoRequest response = new ProdutoRequest(
                 "nome", "desc", "picture",
                 "200", 1l
@@ -43,7 +39,7 @@ public class ProdutoDTOMapperTest {
     }
 
     @Test
-    public void givenModel_whenMapper_shouldReturnResponse() {
+    void givenModel_whenMapper_shouldReturnResponse() {
         ProdutoResponse response = new ProdutoResponse(
                 null, "nome", "desc", "picture",
                 "200", new CategoriaResponse(

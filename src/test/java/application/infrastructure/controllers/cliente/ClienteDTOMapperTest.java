@@ -11,12 +11,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-public class ClienteDTOMapperTest {
+class ClienteDTOMapperTest {
 
     private ClienteDTOMapper mapper = new ClienteDTOMapper();
 
     @Test
-    public void givenRequest_whenMapper_shouldReturnModel() {
+    void givenRequest_whenMapper_shouldReturnModel() {
         ClienteRequest response = new ClienteRequest(
                 1l, "teste", "email", "cpf"
         );
@@ -31,7 +31,7 @@ public class ClienteDTOMapperTest {
     }
 
     @Test
-    public void givenModel_whenMapper_shouldReturnResponse() {
+    void givenModel_whenMapper_shouldReturnResponse() {
         ClienteResponse expected = new ClienteResponse(
                 1l, "teste", "email", "cpf"
         );

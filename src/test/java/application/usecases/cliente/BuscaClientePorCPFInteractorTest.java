@@ -2,7 +2,6 @@ package application.usecases.cliente;
 
 import br.com.fiap.pos.soat3.pedido.application.gateways.ClienteGateway;
 import br.com.fiap.pos.soat3.pedido.application.usecases.cliente.BuscaClientePorCPFInteractor;
-import br.com.fiap.pos.soat3.pedido.domain.entity.Categoria;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Cliente;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class BuscaClientePorCPFInteractorTest {
+class BuscaClientePorCPFInteractorTest {
 
     @Mock
     private ClienteGateway gateway;
@@ -23,7 +22,7 @@ public class BuscaClientePorCPFInteractorTest {
     private BuscaClientePorCPFInteractor useCase;
 
     @Test
-    public void givenCorrectData_whenBuscaClientePorCPF_shouldReturnClienteModel() {
+    void givenCorrectData_whenBuscaClientePorCPF_shouldReturnClienteModel() {
         Cliente expected = new Cliente(
                1l, "teste", "email", "123"
         );

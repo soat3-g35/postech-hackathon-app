@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class CadastraCategoriaInteractorTest {
+class CadastraCategoriaInteractorTest {
 
     @Mock
     private  CategoriaGateway gateway;
@@ -22,7 +22,7 @@ public class CadastraCategoriaInteractorTest {
     private CadastraCategoriaInteractor useCase;
 
     @Test
-    public void givenCorrectData_whenCadastraCategoria_shouldReturnCategoriaModel() {
+    void givenCorrectData_whenCadastraCategoria_shouldReturnCategoriaModel() {
         Categoria expected = new Categoria(
                 1l, "teste"
         );

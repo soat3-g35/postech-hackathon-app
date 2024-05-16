@@ -3,6 +3,7 @@ package br.com.fiap.pos.soat3.pedido.application.usecases.pedido;
 import br.com.fiap.pos.soat3.pedido.application.gateways.PedidoGateway;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Pedido;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class ListaPedidosInteractor {
         if (list != null) {
             return orderList(list);
         } else {
-            return null;
+            return new ArrayList<>();
         }
     }
 

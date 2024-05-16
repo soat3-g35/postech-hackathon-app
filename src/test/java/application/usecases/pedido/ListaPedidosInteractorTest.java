@@ -1,11 +1,8 @@
 package application.usecases.pedido;
 
 import br.com.fiap.pos.soat3.pedido.application.gateways.PedidoGateway;
-import br.com.fiap.pos.soat3.pedido.application.usecases.pedido.AtualizaStatusPedidoInteractor;
 import br.com.fiap.pos.soat3.pedido.application.usecases.pedido.ListaPedidosInteractor;
-import br.com.fiap.pos.soat3.pedido.domain.entity.ItemPedido;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Pedido;
-import br.com.fiap.pos.soat3.pedido.domain.entity.Produto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ListaPedidosInteractorTest {
+class ListaPedidosInteractorTest {
 
     @Mock
     private PedidoGateway gateway;
@@ -30,7 +27,7 @@ public class ListaPedidosInteractorTest {
     private ListaPedidosInteractor useCase;
 
     @Test
-    public void whenListaPedidos_shouldReturnCorrectList() {
+    void whenListaPedidos_shouldReturnCorrectList() {
         List<Pedido> expected = new ArrayList<>();
         Pedido pedido = new Pedido(
                 1l,
@@ -49,7 +46,7 @@ public class ListaPedidosInteractorTest {
     }
 
     @Test
-    public void whenListaPedidos_shouldReturnEmptyList() {
+    void whenListaPedidos_shouldReturnEmptyList() {
         when(gateway.listaPedidos()).thenReturn(null);
 
         List<Pedido> current = useCase.listaPedidos();

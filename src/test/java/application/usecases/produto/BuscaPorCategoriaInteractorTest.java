@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class BuscaPorCategoriaInteractorTest {
+class BuscaPorCategoriaInteractorTest {
 
     @Mock
     private ProdutoGateway gateway;
@@ -25,7 +25,7 @@ public class BuscaPorCategoriaInteractorTest {
     private BuscaPorCategoriaInteractor useCase;
 
     @Test
-    public void givenCorrectData_whenBuscaProdutoPorCategoria_shouldReturnListaDeProdutos() {
+    void givenCorrectData_whenBuscaProdutoPorCategoria_shouldReturnListaDeProdutos() {
         Produto produto = new Produto();
         ArrayList<Produto> lista = new ArrayList<>();
         lista.add(produto);

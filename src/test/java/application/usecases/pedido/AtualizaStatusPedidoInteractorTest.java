@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class AtualizaStatusPedidoInteractorTest {
+class AtualizaStatusPedidoInteractorTest {
 
     @Mock
     private PedidoGateway gateway;
@@ -25,7 +25,7 @@ public class AtualizaStatusPedidoInteractorTest {
     private AtualizaStatusPedidoInteractor useCase;
 
     @Test
-    public void givenCorrectData_whenAtualizaStatusPedido_shouldReturnPedidoModel() {
+    void givenCorrectData_whenAtualizaStatusPedido_shouldReturnPedidoModel() {
         Pedido expected = new Pedido(
                1l,
                 new ArrayList<ItemPedido>()
