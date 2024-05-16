@@ -9,15 +9,17 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.fiap.pos.soat3</groupId>
-	<artifactId>lanchonete</artifactId>
+	<artifactId>pedido</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lanchonete</name>
+	<name>pedido</name>
 	<description>Auto-serviço de Lanches</description>
 	<!-- define the packaging type -->
 	<packaging>jar</packaging>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.3</spring-cloud.version>
+		<!-- SonarCloud -->
+		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
 	</properties>
 	<dependencies>
 		
@@ -89,8 +91,28 @@
 				<executions>
 					<execution>
 						<configuration>
-							<mainClass>br.com.fiap.pos.soat3.lanchonete.LanchoneteApplication</mainClass>
+							<mainClass>br.com.fiap.pos.soat3.pedido.LanchoneteApplication</mainClass>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
