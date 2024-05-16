@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.fiap.pos.soat3</groupId>
-	<artifactId>lanchonete</artifactId>
+	<artifactId>pedido</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lanchonete</name>
+	<name>pedido</name>
 	<description>Auto-serviço de Lanches</description>
 	<!-- define the packaging type -->
 	<packaging>jar</packaging>
@@ -91,7 +91,7 @@
 				<executions>
 					<execution>
 						<configuration>
-							<mainClass>br.com.fiap.pos.soat3.lanchonete.LanchoneteApplication</mainClass>
+							<mainClass>br.com.fiap.pos.soat3.pedido.LanchoneteApplication</mainClass>
 						</configuration>
 					</execution>
 				</executions>
