@@ -51,6 +51,6 @@ class ListaPedidosInteractorTest {
 
         List<Pedido> current = useCase.listaPedidos();
 
-        assertNull(current);
+        assertEquals(new ArrayList<>(), current);
     }
 }
