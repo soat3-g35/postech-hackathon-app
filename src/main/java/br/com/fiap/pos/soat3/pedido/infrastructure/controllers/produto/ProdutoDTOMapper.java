@@ -26,7 +26,7 @@ public class ProdutoDTOMapper {
                 request.categoriaId() != null ? new Categoria(request.categoriaId()) : null);
     }
 
-    ProdutoResponse toResponse(Produto produto) {
+    public ProdutoResponse toResponse(Produto produto) {
         return new ProdutoResponse(produto.getId(),
                 produto.getNome(),
                 produto.getDescricao(),
