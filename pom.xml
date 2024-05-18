@@ -64,6 +64,12 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-sqs</artifactId>
+			<version>1.12.632</version>
+		</dependency>
 		
 	</dependencies>
 
@@ -91,7 +97,7 @@
 				<executions>
 					<execution>
 						<configuration>
-							<mainClass>br.com.fiap.pos.soat3.pedido.LanchoneteApplication</mainClass>
+							<mainClass>br.com.fiap.pos.soat3.pedido.PedidoApplication</mainClass>
 						</configuration>
 					</execution>
 				</executions>

@@ -9,4 +9,7 @@ public interface PedidoRepository extends JpaRepository<PedidoEntity, Long> {
 
     @Query(value = "select * from pedido where status <> :status", nativeQuery = true)
     List<PedidoEntity> findByStatusNot(String status);
+
+    @Query(value = "select * from pedido where status in ('PREPARACAO', 'RECEBIDO')", nativeQuery = true)
+    List<PedidoEntity> findByProducaoStatus();
 }
