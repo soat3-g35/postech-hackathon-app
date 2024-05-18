@@ -33,34 +33,11 @@ public class SQSConfig {
     
     @Bean
     public AmazonSQS amazonSQSClient() {
-//        BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
 
-        log.info("Checking keys endpoint {}, secretKey{}", endpoint);
+        log.info("Checking keys endpoint {}", endpoint);
 
         return AmazonSQSClientBuilder.standard()
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endpoint, region))
-//                .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
-//                .withRegion(Regions.fromName(region))
                 .build();
-//        log.info("Checking keys accessKey {}, secretKey{}", accessKey, secretKey);        
-
-//        return AmazonSQSAsyncClientBuilder.standard()
-//                .withRegion(Regions.US_EAST_1)
-//                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
-//                .build();
-
-
-//        AWSSecurityTokenService stsClient
-//                = AWSSecurityTokenServiceClientBuilder.defaultClient();
-//
-//        STSAssumeRoleSessionCredentialsProvider assumedRoleCredentialsProvider
-//                = new STSAssumeRoleSessionCredentialsProvider.Builder(ROLE_ARN, SESSION_ID)
-//                .withStsClient(stsClient)
-//                .build();
-
-//        AmazonSQS sqsClient
-//                = AmazonSQSClientBuilder.standard()
-//                .withCredentials(assumedRoleCredentialsProvider)
-//                .build();
     }
 }
