@@ -106,3 +106,4 @@ https://github.com/leonara/pos-tech/assets/147456852/d34d7720-77da-498d-93d9-397
   kubectl port-forward svc/demo 8080:8080
 ```
 
+
