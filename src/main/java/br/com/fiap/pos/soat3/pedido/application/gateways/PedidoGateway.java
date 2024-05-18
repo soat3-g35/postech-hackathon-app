@@ -13,4 +13,6 @@ public interface PedidoGateway {
 
     Pedido atualizaStatusPedido(Long pedidoId, String statusPedido);
 
+    List<Pedido> listaPedidosProducao();
+
 }

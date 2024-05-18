@@ -12,17 +12,22 @@ services:
       - data:/var/lib/postgresql/data
     networks:
       - backend-postgres
-  webhook-mock:
-    image: mockoon/cli
-    platform: linux/x86_64
-    hostname: webhook-mock
+ 
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+      - EDGE_PORT=4566
+      - SERVICES=dynamodb,sqs
+      - AWS_ACCESS_KEY_ID=localstack
+      - AWS_SECRET_ACCESS_KEY=localstack
+      - KINESIS_PROVIDER=kinesalite
+      - DEFAULT_REGION=us-east-1
     ports:
-      - '9999:9999'
-    command: -d /data -p 9999
+      - '4566:4566'
     volumes:
-      - ./src/main/resources/mockoon/webhook-mock.json:/data
-    networks:
-      - backend-postgres
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
 volumes:
   data:
     external: true

@@ -54,4 +54,12 @@ public class PedidoDTOMapper {
     public StatusPedidoResponse toStatusPedidoResponse(String status) {
         return new StatusPedidoResponse(status);
     }
+
+    public Pedido toPedido(PedidoRequest request) {
+        List<ItemPedido> itensPedido = toItemPedido(request.itensPedido());
+        return new Pedido(
+                        request.clienteId(),
+                        itensPedido
+        );
+    }
 }
