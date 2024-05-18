@@ -1,5 +1,6 @@
 package br.com.fiap.pos.soat3.pedido.application.infrastructure.controllers.cliente;
 
+import br.com.fiap.pos.soat3.pedido.application.usecases.cliente.BuscaClientePorCPFInteractor;
 import br.com.fiap.pos.soat3.pedido.application.usecases.cliente.CadastraClienteInteractor;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Cliente;
 import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.cliente.ClienteController;
@@ -22,6 +23,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,6 +33,9 @@ class ClienteControllerTest {
 
     @Mock
     private CadastraClienteInteractor cadastraClienteUseCase;
+    
+    @Mock
+    private BuscaClientePorCPFInteractor buscaClientePorCPFUseCase;
     @Mock
     private ClienteDTOMapper clienteDTOMapper;
 
@@ -49,7 +54,7 @@ class ClienteControllerTest {
     }
 
     @Test
-    void givenCategoriaRequestWhenCallShouldReturnSuccess() throws Exception {
+    void givenRequestWhenCallShouldReturnSuccess() throws Exception {
         // given
         Cliente cliente = new Cliente("Nome", "Email", "CPF");
         given(cadastraClienteUseCase.cadastraCliente(any()))
@@ -61,6 +66,24 @@ class ClienteControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonClienteRequest.write(new ClienteRequest(1L, "Nome", "Email", "CPF")).getJson()
                         )).andReturn().getResponse();
+
+
+        // then
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+    }
+
+    @Test
+    void givenRequestByCPFWhenCallShouldReturnSuccess() throws Exception {
+        // given
+        Cliente cliente = new Cliente("Nome", "Email", "CPF");
+        given(buscaClientePorCPFUseCase.bucaClientePorCPF(any()))
+                .willReturn(cliente);
+
+        // when
+        MockHttpServletResponse response = mvc.perform(
+                get("/clientes/33333333333")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        ).andReturn().getResponse();
 
 
         // then
