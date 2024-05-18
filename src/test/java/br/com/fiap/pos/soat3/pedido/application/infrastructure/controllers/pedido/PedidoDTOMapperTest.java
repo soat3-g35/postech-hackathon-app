@@ -64,6 +64,31 @@ public class PedidoDTOMapperTest {
     }
 
     @Test
+    void toPedidoResponseList_shouldReturnListPedidoResponse() {
+        List<PedidoResponse> list = new ArrayList<>();
+        PedidoResponse expected = new PedidoResponse(
+                1l,
+                2l,
+                Collections.emptyList(),
+                "20",
+                StatusPedido.PREPARACAO
+        );
+        list.add(expected);
+
+        List<Pedido> pedidos = new ArrayList<>();
+        Pedido value = new Pedido(
+                2l,
+                Collections.emptyList()
+        );
+        pedidos.add(value);
+
+        List<PedidoResponse> current = mapper.toPedidoResponseList(pedidos);
+
+        assertEquals("", list.size(), current.size());
+        assertEquals("", list.get(0).getClienteId(), current.get(0).getClienteId());
+    }
+
+    @Test
     void toStatusPedidoResponse_shouldReturnStatusPedidoResponse() {
         StatusPedidoResponse expected = new StatusPedidoResponse(
                 "Cancelado"
