@@ -12,6 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 
@@ -40,6 +42,23 @@ public class CategoriaRepositoryGatewayTest {
         when(categoriaEntityMapper.toDomainObj(entity)).thenReturn(model);
 
         var current = gateway.cadastraCategoria(model);
+
+        assertEquals("", model, current);
+    }
+
+    @Test
+    void givenBuscaCategoria_shouldReturnCategoria() {
+        CategoriaEntity entity = new CategoriaEntity(
+                "teste"
+        );
+        Categoria model = new Categoria(
+                "teste"
+        );
+
+        when(categoriaRepository.findById(1l)).thenReturn(Optional.of(entity));
+        when(categoriaEntityMapper.toDomainObj(entity)).thenReturn(model);
+
+        var current = gateway.buscaCategoria(1l);
 
         assertEquals("", model, current);
     }
