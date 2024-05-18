@@ -4,6 +4,7 @@ import br.com.fiap.pos.soat3.pedido.application.gateways.PedidoGateway;
 import br.com.fiap.pos.soat3.pedido.domain.entity.ItemPedido;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Pedido;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Produto;
+import br.com.fiap.pos.soat3.pedido.domain.entity.StatusPedido;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -62,6 +63,7 @@ public class ListaPedidosProducaoInteractorTest {
 
         List<ItemPedido> itens = Arrays.asList(item1);
         Pedido pedido = new Pedido(1L, itens);
+        pedido.setStatus(StatusPedido.PRONTO);
 
         List<Pedido> list = Arrays.asList(pedido);
         when(pedidoGateway.listaPedidosProducao()).thenReturn(list);
