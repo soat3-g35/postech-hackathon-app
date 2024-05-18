@@ -76,6 +76,6 @@ public class ListaPedidosProducaoInteractorTest {
 
         List<Pedido> listaPedidos = listaPedidosProducaoInteractor.listaPedidosProducao();
 
-        assertEquals(listaPedidos.size(), 2);
+        assertEquals(listaPedidos.size(), 4);
     }
 }
