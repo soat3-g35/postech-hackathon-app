@@ -2,10 +2,10 @@ name: pipeline
 
 on:
   push:
-    branches:
-      - main        # The default branch
-      - feature-*    # The other branches to be analyzed
-      - refactor*    # The other branches to be analyzed
+#    branches:
+#      - main        # The default branch
+#      - feature-*    # The other branches to be analyzed
+#      - refactor*    # The other branches to be analyzed
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
