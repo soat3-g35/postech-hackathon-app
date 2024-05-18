@@ -20,7 +20,7 @@ class DeletaProdutoInteractorTest {
     private DeletaProdutoInteractor useCase;
 
     @Test
-    void givenCorrectData_whenCadastraProduto_shouldReturnProduto() {
+    void givenCorrectData_whenDeletaProduto_shouldReturnNothing() {
         doNothing().when(gateway).deletaProduto(123l);
 
        useCase.deletaProduto(123l);

@@ -26,7 +26,7 @@ public class ProdutoRepositoryGateway implements ProdutoGateway {
     @Override
     public List<Produto> buscaPorCategoria(Long id) {
         List<ProdutoEntity> produtoEntities = produtoRepository.findByCategoriaId(id);
-        return produtoEntityMapper.toDomainObj(produtoEntities);
+        return produtoEntityMapper.toDomainListObj(produtoEntities);
     }
 
     @Override
