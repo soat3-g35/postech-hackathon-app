@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ProdutoEntityMapper {
 
-    ProdutoEntity toEntity(Produto produtoDomainObj) {
+    public ProdutoEntity toEntity(Produto produtoDomainObj) {
         return new ProdutoEntity(produtoDomainObj.getNome(),
                 produtoDomainObj.getValor().toString(),
                 produtoDomainObj.getDescricao(),
@@ -39,7 +39,7 @@ public class ProdutoEntityMapper {
         return produtoEntity;
     }
 
-    List<Produto> toDomainObj(List<ProdutoEntity> produtoCleanEntities) {
+    public List<Produto> toDomainListObj(List<ProdutoEntity> produtoCleanEntities) {
         List<Produto> produtos = produtoCleanEntities.stream()
                 .map(produto -> new Produto(produto.getId(),
                         produto.getNome(),
@@ -52,7 +52,7 @@ public class ProdutoEntityMapper {
         return produtos;
     }
 
-    Produto toDomainObj(ProdutoEntity produtoEntity) {
+    public Produto toDomainObj(ProdutoEntity produtoEntity) {
         return new Produto(produtoEntity.getId(),
                 produtoEntity.getNome(),
                 produtoEntity.getDescricao(),

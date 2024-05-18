@@ -45,7 +45,7 @@ public class PedidoEntityMapper {
         return lista;
     }
 
-    PedidoEntity toEntity(Pedido pedidoDomainObj) {
+    public PedidoEntity toEntity(Pedido pedidoDomainObj) {
 
         PedidoEntity pedidoEntity = new PedidoEntity();
         ClienteEntity cliente = new ClienteEntity();
