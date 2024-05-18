@@ -1,14 +1,9 @@
 package br.com.fiap.pos.soat3.pedido.application.infrastructure.gateways.cliente;
 
 
-import br.com.fiap.pos.soat3.pedido.domain.entity.Categoria;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Cliente;
-import br.com.fiap.pos.soat3.pedido.infrastructure.gateways.categoria.CategoriaEntityMapper;
-import br.com.fiap.pos.soat3.pedido.infrastructure.gateways.categoria.CategoriaRepositoryGateway;
 import br.com.fiap.pos.soat3.pedido.infrastructure.gateways.cliente.ClienteEntityMapper;
 import br.com.fiap.pos.soat3.pedido.infrastructure.gateways.cliente.ClienteRepositoryGateway;
-import br.com.fiap.pos.soat3.pedido.infrastructure.persistence.categoria.CategoriaEntity;
-import br.com.fiap.pos.soat3.pedido.infrastructure.persistence.categoria.CategoriaRepository;
 import br.com.fiap.pos.soat3.pedido.infrastructure.persistence.cliente.ClienteEntity;
 import br.com.fiap.pos.soat3.pedido.infrastructure.persistence.cliente.ClienteRepository;
 import org.junit.jupiter.api.Test;
