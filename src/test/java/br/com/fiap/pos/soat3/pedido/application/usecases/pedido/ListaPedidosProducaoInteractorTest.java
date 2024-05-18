@@ -43,6 +43,17 @@ public class ListaPedidosProducaoInteractorTest {
     }
 
     @Test
+    void whenListaPedidosProducaoInteractor_listaPedidosProducaoNull() {
+
+        List<Pedido> list = null;
+        when(pedidoGateway.listaPedidosProducao()).thenReturn(list);
+
+        List<Pedido> listaPedidos = listaPedidosProducaoInteractor.listaPedidosProducao();
+
+        assertEquals(listaPedidos.size(), 0);
+    }
+
+    @Test
     void whenListaPedidosProducaoInteractor_listaPedidosProducao() {
 
         Produto produto1 = new Produto(1L);
