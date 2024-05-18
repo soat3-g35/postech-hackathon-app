@@ -54,6 +54,32 @@ public class PedidoRepositoryGatewayTest {
     }
 
     @Test
+    public void givenPedidoRepositoryGateway_testcadastraPedido() {
+        PedidoEntity pedidoEntity = new PedidoEntity();
+        pedidoEntity.setId(1L);
+        Produto produto1 = new Produto(1L);
+        produto1.setValor(new BigDecimal(10));
+        Produto produto2 = new Produto(2L);
+        produto2.setValor( new BigDecimal(20));
+        ItemPedido item1 = new ItemPedido(produto1, 1);
+        ItemPedido item2 = new ItemPedido(produto2, 2);
+
+        List<ItemPedido> itens = Arrays.asList(item1, item2);
+        Pedido pedido = new Pedido(1L, itens);
+        pedido.setId(1L);
+
+        when(produtoRepositoryGateway.buscaProduto(item1.getProduto().getId())).thenReturn(produto1);
+        when(produtoRepositoryGateway.buscaProduto(item2.getProduto().getId())).thenReturn(produto2);
+        when(pedidoEntityMapper.toEntity(pedido)).thenReturn(pedidoEntity);
+        when(pedidoRepository.save(pedidoEntity)).thenReturn(pedidoEntity);
+
+        var cadastra = pedidoRepositoryGateway.cadastraPedido(pedido);
+
+        // Assert
+        assertEquals("", cadastra.getTotalPedido().toString(), new BigDecimal(50).toString());
+    }
+
+    @Test
     public void givenPedidoRepositoryGateway_testlistaPedidosProducao() {
         List<Pedido> pedidos = Collections.emptyList();
         List<PedidoEntity> pedidosEntity = Collections.emptyList();
