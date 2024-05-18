@@ -64,12 +64,18 @@ public class ListaPedidosProducaoInteractorTest {
         List<ItemPedido> itens = Arrays.asList(item1);
         Pedido pedido = new Pedido(1L, itens);
         pedido.setStatus(StatusPedido.PRONTO);
+        Pedido pedido2 = new Pedido(2L, itens);
+        pedido2.setStatus(StatusPedido.PREPARACAO);
+        Pedido pedido3 = new Pedido(3L, itens);
+        pedido3.setStatus(StatusPedido.RECEBIDO);
+        Pedido pedido4 = new Pedido(4L, itens);
+        pedido4.setStatus(StatusPedido.CANCELADO);
 
-        List<Pedido> list = Arrays.asList(pedido);
+        List<Pedido> list = Arrays.asList(pedido, pedido2, pedido3, pedido4);
         when(pedidoGateway.listaPedidosProducao()).thenReturn(list);
 
         List<Pedido> listaPedidos = listaPedidosProducaoInteractor.listaPedidosProducao();
 
-        assertEquals(listaPedidos.size(), 1);
+        assertEquals(listaPedidos.size(), 4);
     }
 }
