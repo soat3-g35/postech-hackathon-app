@@ -18,7 +18,7 @@ public class ProdutoEntityMapper {
                 new CategoriaEntity(produtoDomainObj.getCategoria().getId()));
     }
 
-    ProdutoEntity updateEntity(ProdutoEntity produtoEntity, Produto produtoDomainObj) {
+    public ProdutoEntity updateEntity(ProdutoEntity produtoEntity, Produto produtoDomainObj) {
 
         if (produtoDomainObj.getNome() != null) {
             produtoEntity.setNome(produtoDomainObj.getNome());

@@ -155,4 +155,40 @@ public class ProdutoRepositoryGatewayTest {
 
         verify(produtoRepository, never()).deleteById(1l);
     }
+    @Test()
+    void givenAlteraProduto_shoudAlterar() {
+        Produto produto = new Produto(1L);
+        produto.setValor(new BigDecimal(10));
+        produto.setNome("teste");
+        produto.setDescricao("img");
+        produto.setImagem("img");
+        produto.setCategoria(new Categoria(1L, "nome"));
+
+        ProdutoEntity entity = new ProdutoEntity(
+                "teste",
+                "desc",
+                "img",
+                "20",
+                new CategoriaEntity()
+        );
+
+        when(produtoRepository.findById(1l)).thenReturn(Optional.of(entity));
+        when(produtoEntityMapper.updateEntity(entity, produto)).thenReturn(entity);
+        when(produtoRepository.save(entity)).thenReturn(entity);
+        when(produtoEntityMapper.toDomainObj(entity)).thenReturn(produto);
+
+        Produto productReturn = gateway.alteraProduto(produto);
+
+        assertEquals(" ", produto.getId().toString(), productReturn.getId().toString());
+    }
+
+    @Test()
+    void givenAlteraProduto_shoudnAlterar() {
+        Produto produto = new Produto(1L);
+        when(produtoRepository.findById(1l)).thenReturn(Optional.ofNullable(null));
+
+        assertThrows(EntityNotFoundException.class, () -> {
+            gateway.alteraProduto(produto);
+        });
+    }
 }
