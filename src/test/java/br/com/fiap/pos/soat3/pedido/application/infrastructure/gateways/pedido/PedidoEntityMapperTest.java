@@ -2,13 +2,17 @@ package br.com.fiap.pos.soat3.pedido.application.infrastructure.gateways.pedido;
 
 import br.com.fiap.pos.soat3.pedido.domain.entity.*;
 import br.com.fiap.pos.soat3.pedido.infrastructure.gateways.pedido.PedidoEntityMapper;
+import br.com.fiap.pos.soat3.pedido.infrastructure.persistence.categoria.CategoriaEntity;
 import br.com.fiap.pos.soat3.pedido.infrastructure.persistence.cliente.ClienteEntity;
+import br.com.fiap.pos.soat3.pedido.infrastructure.persistence.itempedido.ItemPedidoEntity;
 import br.com.fiap.pos.soat3.pedido.infrastructure.persistence.pedido.PedidoEntity;
+import br.com.fiap.pos.soat3.pedido.infrastructure.persistence.produto.ProdutoEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -48,7 +52,16 @@ public class PedidoEntityMapperTest {
         ClienteEntity clienteEntity = new ClienteEntity();
         clienteEntity.setId(1L);
         model.setCliente(clienteEntity);
-        model.setItensPedido(Collections.emptyList());
+        ItemPedidoEntity itemPedidoEntity = new ItemPedidoEntity();
+        itemPedidoEntity.setId(1L);
+        ProdutoEntity produtoEntity = new ProdutoEntity(1L);
+        produtoEntity.setValor("10");
+        CategoriaEntity categoriaEntity = new CategoriaEntity(1L);
+        categoriaEntity.setNome("Bebidas");
+        produtoEntity.setCategoria(categoriaEntity);
+        itemPedidoEntity.setProduto(produtoEntity);
+        itemPedidoEntity.setQuantidade(1);
+        model.setItensPedido(Arrays.asList(itemPedidoEntity));
 
         var current = mapper.toDomain(model);
 
