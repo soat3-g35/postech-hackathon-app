@@ -16,5 +16,8 @@ Este módulo é responsável pela aplicação de Pedido do nosso sistema de lanc
 - Listagem de pedidos - visão cliente;
 - Listagem de pedidos em produção;
 
+## Arquitetura
+![Diagrama](https://iili.io/JiJntae.md.png)
+
 ## Code Coverage
 ![Diagrama](https://iili.io/JiHOW7t.md.png)
