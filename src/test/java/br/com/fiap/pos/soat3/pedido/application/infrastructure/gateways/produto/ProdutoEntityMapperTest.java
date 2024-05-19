@@ -79,4 +79,22 @@ public class ProdutoEntityMapperTest {
         assertEquals("", prd.getId(), current.getId());
     }
 
+    @Test
+    void shouldUpdateProduto() {
+        Produto prd = new Produto(
+                1l, "nome", "desc", "imagem",
+                new BigDecimal(20.00), new Categoria("teste")
+        );
+
+        ProdutoEntity model = new ProdutoEntity(
+                "nome", "20", "desc", "image,",
+                new CategoriaEntity("teste")
+        );
+        model.setId(1l);
+
+        var current = mapper.updateEntity(model,prd);
+
+        assertEquals("", prd.getId(), current.getId());
+    }
+
 }
