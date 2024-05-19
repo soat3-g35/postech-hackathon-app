@@ -2,12 +2,15 @@ package br.com.fiap.pos.soat3.pedido.application.usecases.produto;
 
 import br.com.fiap.pos.soat3.pedido.application.gateways.ProdutoGateway;
 import br.com.fiap.pos.soat3.pedido.application.usecases.produto.AlteraProdutoInteractor;
+import br.com.fiap.pos.soat3.pedido.domain.entity.Categoria;
 import br.com.fiap.pos.soat3.pedido.domain.entity.Produto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -23,7 +26,7 @@ class AlteraProdutoInteractorTest {
 
     @Test
     void givenCorrectData_whenAlteraProduto_shouldReturnProdutoModel() {
-        Produto expected = new Produto();
+        Produto expected = new Produto("nome", "descricao", "imagem", new BigDecimal(10), new Categoria(1L));
         when(gateway.alteraProduto(expected)).thenReturn(expected);
 
         Produto current = useCase.alteraProduto(expected);
