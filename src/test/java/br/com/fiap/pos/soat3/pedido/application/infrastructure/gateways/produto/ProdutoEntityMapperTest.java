@@ -60,4 +60,23 @@ public class ProdutoEntityMapperTest {
 
         assertEquals("", expectedList.size(), current.size());
     }
+
+    @Test
+    void toDomainObj_shouldReturnProduto() {
+        Produto prd = new Produto(
+                1l, "nome", "desc", "imagem",
+                new BigDecimal(20.00), new Categoria("teste")
+        );
+
+        ProdutoEntity model = new ProdutoEntity(
+                "nome", "20", "desc", "image,",
+                new CategoriaEntity("teste")
+        );
+        model.setId(1l);
+
+        var current = mapper.toDomainObj(model);
+
+        assertEquals("", prd.getId(), current.getId());
+    }
+
 }
