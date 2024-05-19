@@ -31,6 +31,14 @@ public class PedidoEntity {
     @Column(name = "status")
     private String status;
 
+    public PedidoEntity() {
+    }
+
+    public PedidoEntity(Long id, String status) {
+        this.id = id;
+        this.status = status;
+    }
+
     public Long getId() {
         return id;
     }
