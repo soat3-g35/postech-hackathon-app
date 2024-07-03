@@ -21,7 +21,6 @@ Este módulo é responsável pela aplicação de Pedido do nosso sistema de lanc
 
 ### Padrão SAGA - Coreografia
 Justificativa para a Escolha
-Descentralização e Escalabilidade:
 
 Autonomia dos Serviços: Na coreografia, cada serviço é responsável por executar suas próprias operações e comunicar-se com outros serviços através de eventos. Isso promove a autonomia dos serviços, permitindo que cada um funcione de forma independente.
 Escalabilidade: Como não há um ponto central de controle, os serviços podem escalar de forma independente. Isso é particularmente útil para lidar com picos de demanda, como durante horários de almoço e jantar.
