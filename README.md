@@ -40,5 +40,10 @@ O microserviço de Pedido consome essa informação e atualiza o status para "PA
   
 ![Diagrama](https://iili.io/JiJntae.md.png)
 
+Também seria possível implementar os seguintes cenários:
+Processo de Pedido: O cliente faz um pedido e o serviço de pedidos publica um evento de "Pedido Criado", para que os serviços interessados possam consumir essa informação.
+Atualização de Status: Cada etapa do processo (pedido recebido, em preparação, pronto) pode ser publicada como um evento. Se posteriormente for criado um serviço de notificações, ele poderá consumir esses eventos e enviar atualizações ao cliente, de forma automática.
+Cadastro de Cliente: O serviço de cadastro publica um evento de "Cliente Cadastrado" após a verificação e armazenamento dos dados. Outros serviços que necessitam dessas informações podem consumir este evento.
+
 ## Code Coverage
 ![Diagrama](https://iili.io/JiHOW7t.md.png)
