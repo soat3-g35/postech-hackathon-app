@@ -19,26 +19,20 @@ Este módulo é responsável pela aplicação de Pedido do nosso sistema de lanc
 
 ## Arquitetura
 
-### Padrão SAGA - Orquestração
-Padrão Escolhido: Orquestração
+### Padrão SAGA - Coreografia
+Justificativa para a Escolha
+Descentralização e Escalabilidade:
 
-- Necessidade de Controle Centralizado:
-Gestão de Fluxo de Trabalho: O processo de realizar um pedido, efetuar pagamento, acompanhar o status e atualizar o status do pedido envolve várias etapas interligadas que precisam ser coordenadas de forma sequencial. A orquestração fornece um controle centralizado, garantindo que cada etapa seja executada na ordem correta.
-Notificações ao Cliente: A orquestração permite um ponto centralizado para enviar notificações ao cliente sobre o status do pedido, assegurando que as notificações sejam enviadas de forma consistente e oportuna.
-Facilidade de Implementação e Manutenção:
+Autonomia dos Serviços: Na coreografia, cada serviço é responsável por executar suas próprias operações e comunicar-se com outros serviços através de eventos. Isso promove a autonomia dos serviços, permitindo que cada um funcione de forma independente.
+Escalabilidade: Como não há um ponto central de controle, os serviços podem escalar de forma independente. Isso é particularmente útil para lidar com picos de demanda, como durante horários de almoço e jantar.
 
-- Simplicidade no Desenvolvimento: 
-A orquestração reduz a complexidade nos serviços individuais, uma vez que cada serviço não precisa conhecer o fluxo completo da transação. Isso facilita o desenvolvimento e a manutenção do sistema.
-Depuração e Monitoramento: A orquestração centraliza o fluxo de transação, facilitando a depuração e o monitoramento do sistema. Isso é crucial para garantir uma experiência de usuário consistente e resolver problemas rapidamente.
-Coordenação de Tarefas Complexas:
+Ausência de Ponto Único de Falha: A coreografia elimina o ponto único de falha associado ao orquestrador. Se um serviço falhar, os demais podem continuar operando normalmente, aumentando a resiliência do sistema.
+Distribuição de Carga: A responsabilidade pela execução do fluxo de trabalho é distribuída entre os serviços, evitando sobrecarga em um único componente.
+Flexibilidade e Evolução:
 
-- Pagamento e Verificação de Pedido: 
-A realização de um pedido envolve a verificação do pagamento, que deve ser coordenada centralmente. A orquestração garante que o pagamento seja processado antes de confirmar o pedido e iniciar a preparação.
-Status do Pedido: A atualização do status do pedido e a comunicação dessa atualização ao cliente são processos que beneficiam de uma coordenação centralizada para garantir a precisão e a consistência das informações.
-Conformidade e Segurança:
-
-- Cadastro de Clientes:
-A coleta de dados pessoais (CPF e email) requer medidas rigorosas de conformidade com a LGPD. A orquestração pode centralizar a verificação e o armazenamento seguro desses dados, garantindo a conformidade com as regulamentações de proteção de dados.
+Evolução Independente dos Serviços: Na coreografia, os serviços podem ser atualizados ou substituídos sem afetar o fluxo geral de trabalho. Isso permite maior flexibilidade para implementar melhorias e novas funcionalidades.
+Adaptação a Mudanças: Serviços podem reagir a eventos de forma flexível, permitindo fácil adaptação a mudanças nos requisitos de negócio ou fluxo de trabalho.
+Acompanhamento do Status do Pedido:
 
   
 ![Diagrama](https://iili.io/JiJntae.md.png)
