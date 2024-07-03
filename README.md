@@ -32,7 +32,10 @@ Flexibilidade e Evolução:
 
 Evolução Independente dos Serviços: Na coreografia, os serviços podem ser atualizados ou substituídos sem afetar o fluxo geral de trabalho. Isso permite maior flexibilidade para implementar melhorias e novas funcionalidades.
 Adaptação a Mudanças: Serviços podem reagir a eventos de forma flexível, permitindo fácil adaptação a mudanças nos requisitos de negócio ou fluxo de trabalho.
-Acompanhamento do Status do Pedido:
+
+#### Desenho da Arquitura
+No desenho abaixo é possível ver nosso padrão SAGA: O microserviço de Pagamento publica um Evento ao ter o pagamento confirmado. 
+O microserviço de Pedido consome essa informação e atualiza o status para "PAGAMENTO APROVADO".
 
   
 ![Diagrama](https://iili.io/JiJntae.md.png)
