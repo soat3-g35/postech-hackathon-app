@@ -40,4 +40,15 @@ public class ClienteRepositoryGateway implements ClienteGateway {
             throw new EntityNotFoundException("Cliente", cpf);
         }
     }
+
+    @Override
+    public Boolean deletaClientePorCPF(String cpf) {
+        Optional<ClienteEntity> clienteEntity = clienteRepository.findByCpf(cpf);
+        if (clienteEntity.isPresent()) {
+            clienteRepository.deleteById(clienteEntity.get().getId());
+            return true;
+        } else {
+            throw new EntityNotFoundException("Cliente", cpf);
+        }
+    }
 }

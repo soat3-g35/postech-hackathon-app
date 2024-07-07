@@ -1,7 +1,9 @@
 package br.com.fiap.pos.soat3.pedido.infrastructure.config;
 
 import br.com.fiap.pos.soat3.pedido.application.gateways.CategoriaGateway;
+import br.com.fiap.pos.soat3.pedido.application.gateways.ClienteGateway;
 import br.com.fiap.pos.soat3.pedido.application.usecases.categoria.CadastraCategoriaInteractor;
+import br.com.fiap.pos.soat3.pedido.application.usecases.cliente.DeletaClienteInteractor;
 import br.com.fiap.pos.soat3.pedido.infrastructure.controllers.categoria.CategoriaDTOMapper;
 import br.com.fiap.pos.soat3.pedido.infrastructure.gateways.categoria.CategoriaEntityMapper;
 import br.com.fiap.pos.soat3.pedido.infrastructure.gateways.categoria.CategoriaRepositoryGateway;
@@ -30,5 +32,10 @@ public class CategoriaBeanConfig {
     @Bean
     CategoriaDTOMapper categoriaDTOMapper() {
         return new CategoriaDTOMapper();
+    }
+
+    @Bean
+    DeletaClienteInteractor deletaClienteUseCase(ClienteGateway clienteGateway){
+        return new DeletaClienteInteractor(clienteGateway);
     }
 }
