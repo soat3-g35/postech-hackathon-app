@@ -6,4 +6,6 @@ public interface ClienteGateway {
     Cliente cadastraCliente(Cliente cliente);
 
     Cliente buscaClientePorCPF(String cpf);
+
+    Boolean deletaClientePorCPF(String cpf);
 }
