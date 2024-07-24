@@ -2,7 +2,9 @@ package br.com.fiap.pos.soat3.medico.application.gateways;
 
 import br.com.fiap.pos.soat3.medico.domain.entity.Medico;
 
+import java.util.List;
+
 public interface MedicoGateway {
 
-    Medico buscaMedico(Long id);
+    List<Medico> buscaMedico(String especialidade);
 }

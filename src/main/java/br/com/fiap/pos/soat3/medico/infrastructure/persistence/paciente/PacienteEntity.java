@@ -1,10 +1,10 @@
-package br.com.fiap.pos.soat3.medico.infrastructure.persistence.medico;
+package br.com.fiap.pos.soat3.medico.infrastructure.persistence.paciente;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "medico")
-public class MedicoEntity {
+@Table(name = "paciente")
+public class PacienteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
@@ -13,27 +13,27 @@ public class MedicoEntity {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "crm")
-    private String crm;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "especialidade")
-    private String especialidade;
+    @Column(name = "cpf")
+    private String cpf;
 
     @Column(name = "endereco")
     private String endereco;
 
-    public MedicoEntity() {
+    public PacienteEntity() {
     }
 
-    public MedicoEntity(Long id) {
+    public PacienteEntity(Long id) {
         this.id = id;
     }
 
-    public MedicoEntity(Long id, String nome, String crm, String especialidade, String endereco) {
+    public PacienteEntity(Long id, String nome, String email, String cpf, String endereco) {
         this.id = id;
         this.nome = nome;
-        this.crm = crm;
-        this.especialidade = especialidade;
+        this.email = email;
+        this.cpf = cpf;
         this.endereco = endereco;
     }
 
@@ -53,20 +53,20 @@ public class MedicoEntity {
         this.nome = nome;
     }
 
-    public String getCrm() {
-        return crm;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCrm(String crm) {
-        this.crm = crm;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getEspecialidade() {
-        return especialidade;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getEndereco() {

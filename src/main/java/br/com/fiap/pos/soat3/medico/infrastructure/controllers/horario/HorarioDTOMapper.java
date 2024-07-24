@@ -25,28 +25,5 @@ public class HorarioDTOMapper {
                 horario.getHoraFim(),
                 horario.getMedico().getId());
     }
-//    public Produto toProduto(Long id, HorarioRequest request) {
-//        return new Produto(id,
-//                request.nome(),
-//                request.descricao(),
-//                request.imagem(),
-//                request.valor() != null ? new BigDecimal(request.valor()) : BigDecimal.ZERO,
-//                request.categoriaId() != null ? new Categoria(request.categoriaId()) : null);
-//    }
-//
-//
-//
-//    BuscaPorMedicoResponse toResponse(List<Produto> produtos) {
-//
-//        List<HorarioResponse> horarioResponse = produtos.stream()
-//                .map(produto -> new HorarioResponse(produto.getId(),
-//                        produto.getNome(),
-//                        produto.getDescricao(),
-//                        produto.getImagem(),
-//                        produto.getValor().toPlainString(),
-//                        new CategoriaResponse(produto.getCategoria().getId(), produto.getCategoria().getNome())))
-//                .toList();
-//
-//        return new BuscaPorMedicoResponse(horarioResponse.size(), horarioResponse);
-//    }
+
 }

@@ -4,15 +4,21 @@ import br.com.fiap.pos.soat3.medico.application.gateways.HorarioGateway;
 import br.com.fiap.pos.soat3.medico.application.usecases.horario.AlteraHorarioInteractor;
 import br.com.fiap.pos.soat3.medico.application.usecases.horario.CadastraHorarioInteractor;
 import br.com.fiap.pos.soat3.medico.infrastructure.controllers.horario.HorarioDTOMapper;
-import br.com.fiap.pos.soat3.medico.infrastructure.gateways.horario.HorarioMapper;
+import br.com.fiap.pos.soat3.medico.infrastructure.controllers.consulta.ConsultaDTOMapper;
+import br.com.fiap.pos.soat3.medico.infrastructure.gateways.consulta.ConsultaEntityMapper;
+import br.com.fiap.pos.soat3.medico.infrastructure.gateways.horario.HorarioEntityMapper;
 import br.com.fiap.pos.soat3.medico.infrastructure.gateways.horario.HorarioRepositoryGateway;
-import br.com.fiap.pos.soat3.medico.infrastructure.gateways.medico.MedicoEntityMapper;
-import br.com.fiap.pos.soat3.medico.infrastructure.integration.AgendaClient;
+import br.com.fiap.pos.soat3.medico.infrastructure.persistence.horario.HorarioRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class HorarioBeanConfig {
+
+    @Bean
+    HorarioEntityMapper horarioEntityMapper() {
+        return new HorarioEntityMapper();
+    }
 
     @Bean
     CadastraHorarioInteractor cadastraHorarioUseCase(HorarioGateway horarioGateway) {
@@ -24,8 +30,8 @@ public class HorarioBeanConfig {
         return new AlteraHorarioInteractor(horarioGateway);
     }
     @Bean
-    HorarioGateway horarioGateway(AgendaClient agendaClient, HorarioMapper horarioMapper) {
-        return new HorarioRepositoryGateway(agendaClient, horarioMapper);
+    HorarioGateway horarioGateway(HorarioRepository horarioRepository, HorarioEntityMapper horarioEntityoMapper) {
+        return new HorarioRepositoryGateway(horarioRepository, horarioEntityoMapper);
     }
 
     @Bean
@@ -34,8 +40,8 @@ public class HorarioBeanConfig {
     }
 
     @Bean
-    HorarioMapper horarioMapper() {
-        return new HorarioMapper();
+    ConsultaDTOMapper horarioMapper() {
+        return new ConsultaDTOMapper();
     }
 
 }

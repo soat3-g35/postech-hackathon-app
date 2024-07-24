@@ -17,26 +17,29 @@ public class HorarioEntity {
     @Column(name = "valor")
     private String valor;
 
-    @Column(name = "dia_da_semana")
-    private String diaDaSemana;
+    @Column(name = "dia_semana")
+    private String diaSemana;
 
-    @Column(name = "horario_inicio")
-    private String horarioInicio;
+    @Column(name = "horar_inicio")
+    private String horaInicio;
 
-    @Column(name = "horario_fim")
-    private String horarioFim;
+    @Column(name = "hora_fim")
+    private String horaFim;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "medidco_id", nullable = false)
     private MedicoEntity medico;
 
-    public HorarioEntity(Long id, String duracao, String valor, String diaDaSemana, String horarioInicio, String horarioFim, MedicoEntity medico) {
+    public HorarioEntity() {
+    }
+
+    public HorarioEntity(Long id, String duracao, String valor, String diaSemana, String horaInicio, String horaFim, MedicoEntity medico) {
         this.id = id;
         this.duracao = duracao;
         this.valor = valor;
-        this.diaDaSemana = diaDaSemana;
-        this.horarioInicio = horarioInicio;
-        this.horarioFim = horarioFim;
+        this.diaSemana = diaSemana;
+        this.horaInicio = horaInicio;
+        this.horaFim = horaFim;
         this.medico = medico;
     }
 
@@ -64,28 +67,28 @@ public class HorarioEntity {
         this.valor = valor;
     }
 
-    public String getDiaDaSemana() {
-        return diaDaSemana;
+    public String getDiaSemana() {
+        return diaSemana;
     }
 
-    public void setDiaDaSemana(String diaDaSemana) {
-        this.diaDaSemana = diaDaSemana;
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
     }
 
-    public String getHorarioInicio() {
-        return horarioInicio;
+    public String getHoraInicio() {
+        return horaInicio;
     }
 
-    public void setHorarioInicio(String horarioInicio) {
-        this.horarioInicio = horarioInicio;
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
     }
 
-    public String getHorarioFim() {
-        return horarioFim;
+    public String getHoraFim() {
+        return horaFim;
     }
 
-    public void setHorarioFim(String horarioFim) {
-        this.horarioFim = horarioFim;
+    public void setHoraFim(String horaFim) {
+        this.horaFim = horaFim;
     }
 
     public MedicoEntity getMedico() {

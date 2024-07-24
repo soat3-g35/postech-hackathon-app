@@ -6,6 +6,9 @@ import br.com.fiap.pos.soat3.medico.domain.entity.Medico;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/medico")
 public class MedicoController {
@@ -18,10 +21,10 @@ public class MedicoController {
         this.medicoDTOMapper = medicoDTOMapper;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<MedicoResponse> buscaMedico(@PathVariable Long id) {
-        Medico medico = buscaMedicoInteractor.buscaMedico(id);
-        return ResponseEntity.ok(medicoDTOMapper.toResponse(medico));
+    @GetMapping("/busca")
+    public ResponseEntity<List<MedicoResponse>> buscaMedico(@RequestParam String especialidade) {
+        List<Medico> medicos = buscaMedicoInteractor.buscaMedico(especialidade);
+        return ResponseEntity.ok(medicos.stream().map(medicoDTOMapper::toResponse).collect(Collectors.toList()));
     }
 
 }

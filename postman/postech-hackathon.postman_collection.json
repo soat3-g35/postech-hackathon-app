@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "6db5198f-414c-448e-8fae-ec8b95a10492",
+		"name": "postech-hackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14237451"
+	},
+	"item": [
+		{
+			"name": "medico-servico",
+			"item": [
+				{
+					"name": "medico",
+					"item": [
+						{
+							"name": "Busca Medico",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/medico/busca?especialidade=Pediatra",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"medico",
+										"busca"
+									],
+									"query": [
+										{
+											"key": "especialidade",
+											"value": "Pediatra"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "horario",
+					"item": [
+						{
+							"name": "atualiza horario",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Plantão\",\n    \"duracao\": \"2\",\n    \"valor\": \"1000\",\n    \"diaSemana\": \"ter\",\n    \"horaInicio\": \"12:00\",\n    \"horaFim\": \"16:00\",\n    \"medicoId\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/horario/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"horario",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cadastra horario",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Plantão 2\",\n    \"duracao\": \"2\",\n    \"valor\": \"100\",\n    \"diaSemana\": \"ter\",\n    \"horaInicio\": \"12:00\",\n    \"horaFim\": \"16:00\",\n    \"medicoId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/horario",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"horario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "consulta",
+					"item": [
+						{
+							"name": "confirma consulta",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"confirmada\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/consulta/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"consulta",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cadastra consulta",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"dataConsulta\": \"27/07/2024\",\n    \"linkConsulta\": \"url\",\n    \"medicoId\": 1,\n    \"pacienteId\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/consulta",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"consulta"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
