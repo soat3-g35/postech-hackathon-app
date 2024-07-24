@@ -5,7 +5,6 @@ import br.com.fiap.pos.soat3.medico.domain.entity.Horario;
 import br.com.fiap.pos.soat3.medico.infrastructure.config.exception.EntityNotFoundException;
 import br.com.fiap.pos.soat3.medico.infrastructure.persistence.horario.HorarioEntity;
 import br.com.fiap.pos.soat3.medico.infrastructure.persistence.horario.HorarioRepository;
-import br.com.fiap.pos.soat3.medico.infrastructure.persistence.medico.MedicoEntity;
 
 import java.util.Optional;
 
