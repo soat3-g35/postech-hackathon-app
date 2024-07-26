@@ -7,44 +7,18 @@ Projeto da Pós Tech da FIAP em Software Architecture
 ✨ [@leonaraqm](https://github.com/leonara) | [@alinedonatoc](https://github.com/alinedonatoc) | [@assouza19](https://github.com/assouza19) ✨
 
 ## Descrição do Projeto
-Este módulo é responsável pela aplicação de Pedido do nosso sistema de lanchonete.
+Este projeto é responsável pelo MVP de uma aplicação para gerenciamento de agenda, médicos e pacientes.
 
 ## Funcionalidades
 
-- CRUD Produto;
-- CRUD Cliente;
-- CRUD Pedido;
-- Listagem de pedidos - visão cliente;
-- Listagem de pedidos em produção;
+- CRUD Horario;
+- CRUD Consulta;
+- CRUD Medico;
+- CRUD Paciente;
 
 ## Arquitetura
-
-### Padrão SAGA - Coreografia
-Justificativa para a Escolha
-
-Autonomia dos Serviços: Na coreografia, cada serviço é responsável por executar suas próprias operações e comunicar-se com outros serviços através de eventos. Isso promove a autonomia dos serviços, permitindo que cada um funcione de forma independente.
-Escalabilidade: Como não há um ponto central de controle, os serviços podem escalar de forma independente. Isso é particularmente útil para lidar com picos de demanda, como durante horários de almoço e jantar.
-
-Ausência de Ponto Único de Falha: A coreografia elimina o ponto único de falha associado ao orquestrador. Se um serviço falhar, os demais podem continuar operando normalmente, aumentando a resiliência do sistema.
-Distribuição de Carga: A responsabilidade pela execução do fluxo de trabalho é distribuída entre os serviços, evitando sobrecarga em um único componente.
-Flexibilidade e Evolução:
-
-Evolução Independente dos Serviços: Na coreografia, os serviços podem ser atualizados ou substituídos sem afetar o fluxo geral de trabalho. Isso permite maior flexibilidade para implementar melhorias e novas funcionalidades.
-Adaptação a Mudanças: Serviços podem reagir a eventos de forma flexível, permitindo fácil adaptação a mudanças nos requisitos de negócio ou fluxo de trabalho.
+Detalhamento da arquitetura está disponível no seguinte [link](https://leonaradevelopment.atlassian.net/wiki/external/NWFkNzA1NGYwOTVkNGQzNGJmYjZiNzljOTljOTUyNDg)
 
 #### Desenho da Arquitura
-No desenho abaixo é possível ver nosso padrão SAGA: O microserviço de Pagamento publica um Evento ao ter o pagamento confirmado. 
-O microserviço de Pedido consome essa informação e atualiza o status para "PAGAMENTO APROVADO".
 
-  
-![Diagrama](https://iili.io/JiJntae.md.png)
-
-Também seria possível implementar os seguintes cenários:
-Processo de Pedido: O cliente faz um pedido e o serviço de pedidos publica um evento de "Pedido Criado", para que os serviços interessados possam consumir essa informação.
-
-Atualização de Status: Cada etapa do processo (pedido recebido, em preparação, pronto) pode ser publicada como um evento. Se posteriormente for criado um serviço de notificações, ele poderá consumir esses eventos e enviar atualizações ao cliente, de forma automática.
-
-Cadastro de Cliente: O serviço de cadastro publica um evento de "Cliente Cadastrado" após a verificação e armazenamento dos dados. Outros serviços que necessitam dessas informações podem consumir este evento.
-
-## Code Coverage
-![Diagrama](https://iili.io/JiHOW7t.md.png)
+![HackathonPosTech-Melhorias.drawio (1).png](![desenho-arquitetura.png](desenho-arquitetura.png))

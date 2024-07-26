@@ -1,7 +1,5 @@
 package br.com.fiap.pos.soat3.medico.infrastructure.persistence.consulta;
 
-import br.com.fiap.pos.soat3.medico.domain.entity.Medico;
-import br.com.fiap.pos.soat3.medico.domain.entity.Paciente;
 import br.com.fiap.pos.soat3.medico.infrastructure.persistence.medico.MedicoEntity;
 import br.com.fiap.pos.soat3.medico.infrastructure.persistence.paciente.PacienteEntity;
 import jakarta.persistence.*;
