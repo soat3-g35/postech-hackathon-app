@@ -21,4 +21,4 @@ Detalhamento da arquitetura está disponível no seguinte [link](https://leonara
 
 #### Desenho da Arquitura
 
-![HackathonPosTech-Melhorias.drawio (1).png](![desenho-arquitetura.png](desenho-arquitetura.png))
+![Desenho da Arquitetura](desenho-arquitetura.png))
