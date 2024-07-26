@@ -3,22 +3,22 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: pedido
-  name: pedido
+    app: medico
+  name: medico
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pedido
+      app: medico
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: pedido
+        app: medico
     spec:
       containers:
-        - image: 471112887467.dkr.ecr.us-east-1.amazonaws.com/pedido-postech-repository:latest
+        - image: 471112887467.dkr.ecr.us-east-1.amazonaws.com/medico-postech-repository:latest
           imagePullPolicy: Always
           name: api-img
           resources:
@@ -48,8 +48,8 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: pedido
-  name: pedido
+    app: medico
+  name: medico
 spec:
   ports:
     - name: 8080-8080
@@ -57,13 +57,13 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    app: pedido
+    app: medico
   type: LoadBalancer
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pedido-app-ingress
+  name: medico-app-ingress
   annotations:
     kubernetes.io/ingress.class: "traefik"
     traefik.ingress.kubernetes.io/router.entrypoints: web
@@ -73,10 +73,10 @@ spec:
     - http:
         paths:
           - pathType: Prefix
-            path: "/pedido"
+            path: "/medico"
             backend:
               service:
-                name: pedido
+                name: medico
                 port:
                   number: 8080
 ---
@@ -84,14 +84,14 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   creationTimestamp: null
-  name: pedido
+  name: medico
 spec:
   maxReplicas: 10
   minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: pedido
+    name: medico
   targetCPUUtilizationPercentage: 30
 status:
   currentReplicas: 0

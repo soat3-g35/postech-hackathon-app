@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: postech-hackathon
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: http://localhost
+paths:
+  /medico/busca:
+    get:
+      tags:
+        - medico-servico
+        - medico
+      summary: Busca Medico
+      description: Busca Medico
+      operationId: buscaMedico
+      parameters:
+        - name: especialidade
+          in: query
+          schema:
+            type: string
+            example: Pediatra
+      responses:
+        '200':
+          description: ''
+  /horario/2:
+    put:
+      tags:
+        - medico-servico
+        - horario
+      summary: atualiza horario
+      description: atualiza horario
+      operationId: atualizaHorario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                diaSemana:
+                  type: string
+                  example: ter
+                duracao:
+                  type: string
+                  example: '2'
+                horaFim:
+                  type: string
+                  example: '16:00'
+                horaInicio:
+                  type: string
+                  example: '12:00'
+                medicoId:
+                  type: number
+                  example: 2
+                nome:
+                  type: string
+                  example: Plantão
+                valor:
+                  type: string
+                  example: '1000'
+            examples:
+              atualiza horario:
+                value:
+                  diaSemana: ter
+                  duracao: '2'
+                  horaFim: '16:00'
+                  horaInicio: '12:00'
+                  medicoId: 2
+                  nome: Plantão
+                  valor: '1000'
+      responses:
+        '200':
+          description: ''
+  /horario:
+    post:
+      tags:
+        - medico-servico
+        - horario
+      summary: cadastra horario
+      description: cadastra horario
+      operationId: cadastraHorario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                diaSemana:
+                  type: string
+                  example: ter
+                duracao:
+                  type: string
+                  example: '2'
+                horaFim:
+                  type: string
+                  example: '16:00'
+                horaInicio:
+                  type: string
+                  example: '12:00'
+                medicoId:
+                  type: number
+                  example: 1
+                nome:
+                  type: string
+                  example: Plantão 2
+                valor:
+                  type: string
+                  example: '100'
+            examples:
+              cadastra horario:
+                value:
+                  diaSemana: ter
+                  duracao: '2'
+                  horaFim: '16:00'
+                  horaInicio: '12:00'
+                  medicoId: 1
+                  nome: Plantão 2
+                  valor: '100'
+      responses:
+        '200':
+          description: ''
+  /consulta/1:
+    put:
+      tags:
+        - medico-servico
+        - consulta
+      summary: confirma consulta
+      description: confirma consulta
+      operationId: confirmaConsulta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                confirmada:
+                  type: boolean
+                  example: false
+            examples:
+              confirma consulta:
+                value:
+                  confirmada: false
+      responses:
+        '200':
+          description: ''
+  /consulta:
+    post:
+      tags:
+        - medico-servico
+        - consulta
+      summary: cadastra consulta
+      description: cadastra consulta
+      operationId: cadastraConsulta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataConsulta:
+                  type: string
+                  example: 27/07/2024
+                linkConsulta:
+                  type: string
+                  example: url
+                medicoId:
+                  type: number
+                  example: 1
+                pacienteId:
+                  type: number
+                  example: 2
+            examples:
+              cadastra consulta:
+                value:
+                  dataConsulta: 27/07/2024
+                  linkConsulta: url
+                  medicoId: 1
+                  pacienteId: 2
+      responses:
+        '200':
+          description: ''
+tags:
+  - name: medico-servico
+  - name: medico
+  - name: horario
+  - name: consulta

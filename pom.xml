@@ -115,7 +115,7 @@
 				<executions>
 					<execution>
 						<configuration>
-							<mainClass>br.com.fiap.pos.soat3.pedido.PedidoApplication</mainClass>
+							<mainClass>br.com.fiap.pos.soat3.pedido.MedicoApplication</mainClass>
 						</configuration>
 					</execution>
 				</executions>
